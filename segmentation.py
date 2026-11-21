@@ -224,7 +224,7 @@ def _hull_radius(rt, th, cy, cx):
 # ------------------------------------------------------------------- main
 def segment(rgb, bias=0.0, refine=2, n_ang=96, lam=2.0, dmax=None, shadow_aware=True, snap=True,
             smooth_level=5, fg_frac=0.15, fg_k=3, logit_blur=2,
-            hull=False, grow=1.0):
+            hull=False, grow=1.0, cap_ratio=1.3):
     """rgb: HxWx3 uint8 window, click at the centre.
     Returns an (n_ang, 2) array of outline points in continuous pixel
     coordinates (x right, y down, pixel edges at integers), or None."""
@@ -277,6 +277,10 @@ def segment(rgb, bias=0.0, refine=2, n_ang=96, lam=2.0, dmax=None, shadow_aware=
         if new_bg.sum() >= 50:
             bg = new_bg
 
+    cap = None
+    if cap_ratio:                                         # crowns are roughly round: no arm much longer than the typical radius
+        cap = cap_ratio * float(np.median(rt))
+        rt = np.minimum(rt, cap)
     if snap:
         rt = _snap_to_edge(logit, rr, ang_idx, rt, th, cy, cx, R)
         rounds = 1
@@ -284,6 +288,8 @@ def segment(rgb, bias=0.0, refine=2, n_ang=96, lam=2.0, dmax=None, shadow_aware=
         rounds = max(2, n_ang // 48)
     for _ in range(rounds):                               # light smoothing around the circle
         rt = (np.roll(rt, 1) + rt + np.roll(rt, -1)) / 3.0
+    if cap is not None:
+        rt = np.minimum(rt, cap)
     if hull:                                              # freehand look: fill the notches, keep it convex
         rt = _hull_radius(rt, th, cy, cx)
     if grow != 1.0:

@@ -66,16 +66,23 @@ class TreeCrownPlugin:
         self.action = QAction(QIcon(os.path.join(os.path.dirname(__file__), 'icon.svg')),
                               'MD_TreeFree', self.iface.mainWindow())
         self.action.setCheckable(True)
+        self.action.setObjectName('md_tree_free_capture')
         self.action.triggered.connect(self.activate)
         self.action_set = QAction('MD_TreeFree settings...', self.iface.mainWindow())
+        self.action_set.setObjectName('md_tree_free_settings')
         self.action_set.triggered.connect(self.show_settings)
         self.tool = TreeCaptureTool(self)
         self.tool.setAction(self.action)
         self.iface.addToolBarIcon(self.action)
         self.iface.addPluginToMenu('MD_TreeFree', self.action)
         self.iface.addPluginToMenu('MD_TreeFree', self.action_set)
+        # shows up in Settings > Keyboard Shortcuts (no default key; assign your own there)
+        self.iface.registerMainWindowAction(self.action, '')
+        self.iface.registerMainWindowAction(self.action_set, '')
 
     def unload(self):
+        self.iface.unregisterMainWindowAction(self.action)
+        self.iface.unregisterMainWindowAction(self.action_set)
         self.iface.removeToolBarIcon(self.action)
         self.iface.removePluginMenu('MD_TreeFree', self.action)
         self.iface.removePluginMenu('MD_TreeFree', self.action_set)
