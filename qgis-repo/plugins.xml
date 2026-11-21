@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugins>
+  <pyqgis_plugin name="MD_TreeFree" version="0.1.1">
+    <description><![CDATA[Click a tree in aerial imagery and get a smooth, freehand-style outline of the whole crown.]]></description>
+    <about><![CDATA[Same click-to-delineate tool as MD_Tree, but the outline is smooth and covers the whole crown without notches, like a hand-drawn outline. Click captures a crown, click and drag draws a circle, right click deletes a crown.]]></about>
+    <version>0.1.1</version>
+    <qgis_minimum_version>3.22</qgis_minimum_version>
+    <homepage>https://github.com/modidev-varkala/md_tree_free</homepage>
+    <file_name>md_tree_free.zip</file_name>
+    <author_name>MODIDEV</author_name>
+    <download_url>https://raw.githubusercontent.com/modidev-varkala/md_tree_free/main/qgis-repo/md_tree_free.zip</download_url>
+    <uploaded_by>MODIDEV</uploaded_by>
+    <create_date>2026-11-20T00:00:00</create_date>
+    <update_date>2026-11-20T00:00:00</update_date>
+    <experimental>True</experimental>
+    <deprecated>False</deprecated>
+    <tracker>https://github.com/modidev-varkala/md_tree_free/issues</tracker>
+    <repository>https://github.com/modidev-varkala/md_tree_free</repository>
+    <tags>trees,vegetation,digitizing,aerial,crown,freehand</tags>
+    <trusted>False</trusted>
+  </pyqgis_plugin>
+</plugins>
