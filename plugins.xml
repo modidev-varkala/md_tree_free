@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugins>
+  <pyqgis_plugin name="MD_TreeFree" version="0.2.0">
+    <description>Click a tree in aerial imagery and get a smooth, freehand-style outline of the whole crown.</description>
+    <about>Click-to-delineate tool for tree crowns on aerial or satellite imagery (GeoTIFF, XYZ or WMS). Click near the centre of a tree and its crown is outlined automatically: the plugin learns what the tree and the surroundings look like, ignores cast shadows, and fits a smooth round outline. Click and drag draws a circle by hand. Right click deletes a crown. Output is a polygon layer with an area_m2 attribute. Pure numpy, no extra packages.</about>
+    <version>0.2.0</version>
+    <qgis_minimum_version>3.22</qgis_minimum_version>
+    <homepage>https://github.com/modidev-varkala/md_tree_free</homepage>
+    <file_name>md_tree_free.zip</file_name>
+    <icon>icon.svg</icon>
+    <author_name>MODIDEV</author_name>
+    <download_url>https://raw.githubusercontent.com/modidev-varkala/md_tree_free/main/md_tree_free.zip</download_url>
+    <uploaded_by>MODIDEV</uploaded_by>
+    <create_date>2026-11-27</create_date>
+    <update_date>2026-11-27</update_date>
+    <experimental>False</experimental>
+    <deprecated>False</deprecated>
+    <tracker>https://github.com/modidev-varkala/md_tree_free/issues</tracker>
+    <repository>https://github.com/modidev-varkala/md_tree_free</repository>
+    <tags>trees,vegetation,digitizing,aerial,crown,canopy,forestry</tags>
+    <category>Vector</category>
+  </pyqgis_plugin>
+</plugins>
